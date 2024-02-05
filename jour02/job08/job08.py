@@ -40,6 +40,10 @@ class Animal:
         self.cursor.execute(query,values)
         self.mydb.commit()
         print("animal supprimé")
+    
+    def close_connection(self):
+            self.cursor.close()
+            self.mydb.close()
 
 
 class Cage:
@@ -83,6 +87,10 @@ class Cage:
         self.cursor.execute(query,values)
         self.mydb.commit()
         print("cage supprimé")
+    
+    def close_connection(self):
+            self.cursor.close()
+            self.mydb.close()
 
 class Directeur:
     def __init__(self, host, user, password, database):
@@ -114,6 +122,9 @@ class Directeur:
         else:
             print('Rien trouvé')
 
+    def close_connection(self):
+            self.cursor.close()
+            self.mydb.close()
 
 host = "localhost"
 user = "root"
@@ -141,6 +152,10 @@ gerer_zoo.animaux_dans_cage()
 
 print('La superficie total des cages est : ')
 gerer_zoo.superficie_total_cages()
+
+gerer_animaux.close_connection()
+gerer_cage.close_connection()
+gerer_zoo.close_connection()
 
 
 
